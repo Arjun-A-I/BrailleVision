@@ -1,3 +1,4 @@
+
 #include<Servo.h>
 #define ACTIVATED LOW
 Servo s1,s2,s3,s4,s5,s6;
@@ -19,6 +20,12 @@ void setup() {
   s4.attach(A3);
   s5.attach(A4);
   s6.attach(A5);
+  s1.write(180);
+  s2.write(180);
+  s3.write(180);
+  s4.write(0);
+  s5.write(0);
+  s6.write(0);
   //for 2nd braille
   d1.attach(3);
   d2.attach(5);
@@ -26,8 +33,15 @@ void setup() {
   d4.attach(9);
   d5.attach(10);
   d6.attach(11);
+  d1.write(180);
+  d2.write(180);
+  d3.write(180);
+  d4.write(0);
+  d5.write(0);
+  d6.write(0);
   Serial.begin(9600);
   pinMode(button,INPUT_PULLUP);
+  pinMode(button2,INPUT_PULLUP);
 //  digitalWrite(button,LOW);
 }
 
@@ -45,20 +59,22 @@ void receieveData(){
       secCount=true;
     }
     if(counterStart)
-      if(counter<stringLength)
+      if(c != '\0')
       {
         receivedString = String(receivedString+c);
         counter++;
       }
     if(secCount)
     {
-      if(counter<stringLength)
+      if(c != '\0')
       {
         receivedSecondary = String(receivedSecondary+c);
         counter++;
       }
     }
   }
+  secCount=false;
+  counterStart=false;
 }
 
 
@@ -92,7 +108,7 @@ void receieveMovement(){
 
 void loop() {
   // put your main code here, to run repeatedly:
-  //receieveData();
+  receieveData();
   receieveMovement();
   String word = receivedString;
   String details = receivedSecondary;
@@ -330,481 +346,491 @@ void loop() {
      {
       Serial.print("1st button pressed");
         i++;
+        if(word[i]=='\0')
+        {
+          i=1;
+          word="";
+        }
      }
      byte secbtn = digitalRead(button2);
      if(secbtn == LOW)
      {
       Serial.print("2nd button pressed");
         j++;
+        if(details[j]=='\0')
+        {
+         j=1;
+         details="";
+        }
      }
 }
 
 //Alphabet functionw
 void A(){
-  s1.write(40);
-  s2.write(0);
-  s3.write(0);
-  s4.write(180);
-  s5.write(180);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180);
+  s3.write(180);
+  s4.write(0);
+  s5.write(0);
+  s6.write(40);
 }
 
 void Asec(){
-  d1.write(40);
-  d2.write(0);
-  d3.write(0);
-  d4.write(180);
-  d5.write(180);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180);
+  d3.write(180);
+  d4.write(0);
+  d5.write(0);
+  d6.write(40);
 }
 
 void B(){
-  s1.write(40);
-  s2.write(40);
-  s3.write(0);
-  s4.write(180);
-  s5.write(180);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180);
+  s3.write(180);
+  s4.write(0);
+  s5.write(40);
+  s6.write(40);
 }
 
 void Bsec(){
-  d1.write(40);
-  d2.write(40);
-  d3.write(0);
-  d4.write(180);
-  d5.write(180);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180);
+  d3.write(180);
+  d4.write(0);
+  d5.write(40);
+  d6.write(40);
 }
 
 void C(){
-  s1.write(90);
-  s2.write(0);
-  s3.write(0);
-  s4.write(180-40);
-  s5.write(180);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180);
+  s3.write(180-40);
+  s4.write(0);
+  s5.write(0);
+  s6.write(40);
 }
 
 void Csec(){
-  d1.write(90);
-  d2.write(0);
-  d3.write(0);
-  d4.write(180-40);
-  d5.write(180);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180);
+  d3.write(180-40);
+  d4.write(0);
+  d5.write(0);
+  d6.write(40);
 }
 
 void D(){
-  s1.write(40);
-  s2.write(0);
-  s3.write(0);
-  s4.write(180-40);
-  s5.write(180-40);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180-40);
+  s3.write(180-40);
+  s4.write(0);
+  s5.write(0);
+  s6.write(40);
 }
 
 void Dsec(){
-  d1.write(40);
-  d2.write(0);
-  d3.write(0);
-  d4.write(180-40);
-  d5.write(180-40);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180-40);
+  d3.write(180-40);
+  d4.write(0);
+  d5.write(0);
+  d6.write(40);
 }
 
 void E(){
-  s1.write(40);
-  s2.write(0);
-  s3.write(0);
-  s4.write(180);
-  s5.write(180-40);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180-40);
+  s3.write(180);
+  s4.write(0);
+  s5.write(0);
+  s6.write(40);
 }
 
 void Esec(){
-  d1.write(40);
-  d2.write(0);
-  d3.write(0);
-  d4.write(180);
-  d5.write(180-40);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180-40);
+  d3.write(180);
+  d4.write(0);
+  d5.write(0);
+  d6.write(40);
 }
 
 void Flet(){
-  s1.write(40);
-  s2.write(40);
-  s3.write(0);
-  s4.write(180-40);
-  s5.write(180);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180);
+  s3.write(180-40);
+  s4.write(0);
+  s5.write(40);
+  s6.write(40);
 }
 
 void Fsec(){
-  d1.write(40);
-  d2.write(40);
-  d3.write(0);
-  d4.write(180-40);
-  d5.write(180);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180);
+  d3.write(180-40);
+  d4.write(0);
+  d5.write(40);
+  d6.write(40);
 }
 
 void G(){
-  s1.write(40);
-  s2.write(40);
-  s3.write(0);
-  s4.write(180-40);
-  s5.write(180-40);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180-40);
+  s3.write(180-40);
+  s4.write(0);
+  s5.write(40);
+  s6.write(40);
 }
 
 void Gsec(){
-  d1.write(40);
-  d2.write(40);
-  d3.write(0);
-  d4.write(180-40);
-  d5.write(180-40);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180-40);
+  d3.write(180-40);
+  d4.write(0);
+  d5.write(40);
+  d6.write(40);
 }
 
 void H(){
-  s1.write(40);
-  s2.write(40);
-  s3.write(0);
-  s4.write(180);
-  s5.write(180-40);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180-40);
+  s3.write(180);
+  s4.write(0);
+  s5.write(40);
+  s6.write(40);
 }
 
 void Hsec(){
-  d1.write(40);
-  d2.write(40);
-  d3.write(0);
-  d4.write(180);
-  d5.write(180-40);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180-40);
+  d3.write(180);
+  d4.write(0);
+  d5.write(40);
+  d6.write(40);
 }
 
 void I(){
-  s1.write(0);
-  s2.write(40);
-  s3.write(40);
-  s4.write(180-40);
-  s5.write(180);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180);
+  s3.write(180-40);
+  s4.write(0);
+  s5.write(40);
+  s6.write(0);
 }
 
 void Isec(){
-  d1.write(0);
-  d2.write(40);
-  d3.write(40);
-  d4.write(180-40);
-  d5.write(180);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180);
+  d3.write(180-40);
+  d4.write(0);
+  d5.write(40);
+  d6.write(0);
 }
 
 void J(){
-  s1.write(0);
-  s2.write(40);
-  s3.write(0);
-  s4.write(180-40);
-  s5.write(180-40);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180-40);
+  s3.write(180-40);
+  s4.write(0);
+  s5.write(40);
+  s6.write(0);
 }
 
 void Jsec(){
-  d1.write(0);
-  d2.write(40);
-  d3.write(0);
-  d4.write(180-40);
-  d5.write(180-40);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180-40);
+  d3.write(180-40);
+  d4.write(0);
+  d5.write(40);
+  d6.write(0);
 }
 
 void K(){
-  s1.write(40);
-  s2.write(0);
-  s3.write(40);
-  s4.write(180);
-  s5.write(180);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180);
+  s3.write(180);
+  s4.write(40);
+  s5.write(0);
+  s6.write(40);
 }
 
 void Ksec(){
-  d1.write(40);
-  d2.write(0);
-  d3.write(40);
-  d4.write(180);
-  d5.write(180);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180);
+  d3.write(180);
+  d4.write(40);
+  d5.write(0);
+  d6.write(40);
 }
 
 void L(){
-  s1.write(40);
-  s2.write(40);
-  s3.write(40);
-  s4.write(180);
-  s5.write(180);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180);
+  s3.write(180);
+  s4.write(40);
+  s5.write(40);
+  s6.write(40);
 }
 
 void Lsec(){
-  d1.write(40);
-  d2.write(40);
-  d3.write(40);
-  d4.write(180);
-  d5.write(180);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180);
+  d3.write(180);
+  d4.write(40);
+  d5.write(40);
+  d6.write(40);
 }
 
 void M(){
-  s1.write(40);
-  s2.write(0);
-  s3.write(40);
-  s4.write(180-40);
-  s5.write(180);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180);
+  s3.write(180-40);
+  s4.write(40);
+  s5.write(0);
+  s6.write(40);
 }
 
 void Msec(){
-  d1.write(40);
-  d2.write(0);
-  d3.write(40);
-  d4.write(180-40);
-  d5.write(180);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180);
+  d3.write(180-40);
+  d4.write(40);
+  d5.write(0);
+  d6.write(40);
 }
 
 void N(){
-  s1.write(40);
-  s2.write(0);
-  s3.write(40);
-  s4.write(180-40);
-  s5.write(180-40);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180-40);
+  s3.write(180-40);
+  s4.write(40);
+  s5.write(0);
+  s6.write(40);
 }
 
 void Nsec(){
-  d1.write(40);
-  d2.write(0);
-  d3.write(40);
-  d4.write(180-40);
-  d5.write(180-40);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180-40);
+  d3.write(180-40);
+  d4.write(40);
+  d5.write(0);
+  d6.write(40);
 }
 
 void O(){
-  s1.write(40);
-  s2.write(0);
-  s3.write(40);
-  s4.write(180);
-  s5.write(180-40);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180-40);
+  s3.write(180);
+  s4.write(40);
+  s5.write(0);
+  s6.write(40);
 }
 
 void Osec(){
-  d1.write(40);
-  d2.write(0);
-  d3.write(40);
-  d4.write(180);
-  d5.write(180-40);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180-40);
+  d3.write(180);
+  d4.write(40);
+  d5.write(0);
+  d6.write(40);
 }
 
 void P(){
-  s1.write(40);
-  s2.write(40);
-  s3.write(40);
-  s4.write(180-40);
-  s5.write(180);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180);
+  s3.write(180-40);
+  s4.write(40);
+  s5.write(40);
+  s6.write(40);
 }
 
 void Psec(){
-  d1.write(40);
-  d2.write(40);
-  d3.write(40);
-  d4.write(180-40);
-  d5.write(180);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180);
+  d3.write(180-40);
+  d4.write(40);
+  d5.write(40);
+  d6.write(40);
 }
 
 void Q(){
-  s1.write(40);
-  s2.write(40);
-  s3.write(40);
-  s4.write(180-40);
-  s5.write(180-40);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180-40);
+  s3.write(180-40);
+  s4.write(40);
+  s5.write(40);
+  s6.write(40);
 }
 
 void Qsec(){
-  d1.write(40);
-  d2.write(40);
-  d3.write(40);
-  d4.write(180-40);
-  d5.write(180-40);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180-40);
+  d3.write(180-40);
+  d4.write(40);
+  d5.write(40);
+  d6.write(40);
 }
 
 void R(){
-  s1.write(40);
-  s2.write(40);
-  s3.write(40);
-  s4.write(180);
-  s5.write(180-40);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180-40);
+  s3.write(180);
+  s4.write(40);
+  s5.write(40);
+  s6.write(40);
 }
 
 void Rsec(){
-  d1.write(40);
-  d2.write(40);
-  d3.write(40);
-  d4.write(180);
-  d5.write(180-40);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180-40);
+  d3.write(180);
+  d4.write(40);
+  d5.write(40);
+  d6.write(40);
 }
 
 
 void S(){
-  s1.write(0);
-  s2.write(40);
-  s3.write(40);
-  s4.write(180-40);
-  s5.write(180);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180);
+  s3.write(180-40);
+  s4.write(40);
+  s5.write(40);
+  s6.write(0);
 }
 
 void Ssec(){
-  d1.write(0);
-  d2.write(40);
-  d3.write(40);
-  d4.write(180-40);
-  d5.write(180);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180);
+  d3.write(180-40);
+  d4.write(40);
+  d5.write(40);
+  d6.write(0);
 }
 
 void T(){
-  s1.write(0);
-  s2.write(40);
-  s3.write(40);
-  s4.write(180-40);
-  s5.write(180-40);
-  s6.write(180);
+  s1.write(180);
+  s2.write(180-40);
+  s3.write(180-40);
+  s4.write(40);
+  s5.write(40);
+  s6.write(0);
 }
 
 void Tsec(){
-  d1.write(0);
-  d2.write(40);
-  d3.write(40);
-  d4.write(180-40);
-  d5.write(180-40);
-  d6.write(180);
+  d1.write(180);
+  d2.write(180-40);
+  d3.write(180-40);
+  d4.write(40);
+  d5.write(40);
+  d6.write(0);
 }
 
 void U(){
-  s1.write(40);
-  s2.write(0);
-  s3.write(40);
-  s4.write(180);
-  s5.write(180);
-  s6.write(180-40);
+  s1.write(180-40);
+  s2.write(180);
+  s3.write(180);
+  s4.write(40);
+  s5.write(0);
+  s6.write(40);
 }
 
 void Usec(){
-  d1.write(40);
-  d2.write(0);
-  d3.write(40);
-  d4.write(180);
-  d5.write(180);
-  d6.write(180-40);
+  d1.write(180-40);
+  d2.write(180);
+  d3.write(180);
+  d4.write(40);
+  d5.write(0);
+  d6.write(40);
 }
 
 void V(){
-  s1.write(40);
-  s2.write(40);
-  s3.write(40);
-  s4.write(180);
-  s5.write(180);
-  s6.write(180-40);
+  s1.write(180-40);
+  s2.write(180);
+  s3.write(180);
+  s4.write(40);
+  s5.write(40);
+  s6.write(40);
 }
 
 void Vsec(){
-  d1.write(40);
-  d2.write(40);
-  d3.write(40);
-  d4.write(180);
-  d5.write(180);
-  d6.write(180-40);
+  d1.write(180-40);
+  d2.write(180);
+  d3.write(180);
+  d4.write(40);
+  d5.write(40);
+  d6.write(40);
 }
 
 void W(){
-  s1.write(0);
-  s2.write(40);
-  s3.write(0);
-  s4.write(180-40);
-  s5.write(180-40);
-  s6.write(180-40);
+  s1.write(180-40);
+  s2.write(180-40);
+  s3.write(180-40);
+  s4.write(0);
+  s5.write(40);
+  s6.write(0);
 }
 
 void Wsec(){
-  d1.write(0);
-  d2.write(40);
-  d3.write(0);
-  d4.write(180-40);
-  d5.write(180-40);
-  d6.write(180-40);
+  d1.write(180-40);
+  d2.write(180-40);
+  d3.write(180-40);
+  d4.write(0);
+  d5.write(40);
+  d6.write(0);
 }
 
 void X(){
-  s1.write(40);
-  s2.write(0);
-  s3.write(40);
-  s4.write(180-40);
-  s5.write(180);
-  s6.write(180-40);
+  s1.write(180-40);
+  s2.write(180);
+  s3.write(180-40);
+  s4.write(40);
+  s5.write(0);
+  s6.write(40);
 }
 
 void Xsec(){
-  d1.write(40);
-  d2.write(0);
-  d3.write(40);
-  d4.write(180-40);
-  d5.write(180);
-  d6.write(180-40);
+  d1.write(180-40);
+  d2.write(180);
+  d3.write(180-40);
+  d4.write(40);
+  d5.write(0);
+  d6.write(40);
 }
 
 void Y(){
-  s1.write(40);
-  s2.write(0);
-  s3.write(40);
-  s4.write(180-40);
-  s5.write(180-40);
-  s6.write(180-40);
+  s1.write(180-40);
+  s2.write(180-40);
+  s3.write(180-40);
+  s4.write(40);
+  s5.write(0);
+  s6.write(40);
 }
 
 void Ysec(){
-  d1.write(40);
-  d2.write(0);
-  d3.write(40);
-  d4.write(180-40);
-  d5.write(180-40);
-  d6.write(180-40);
+  d1.write(180-40);
+  d2.write(180-40);
+  d3.write(180-40);
+  d4.write(40);
+  d5.write(0);
+  d6.write(40);
 }
 
 void Z(){
-  s1.write(40);
-  s2.write(0);
-  s3.write(40);
-  s4.write(180);
-  s5.write(180-40);
-  s6.write(180-40);
+  s1.write(180-40);
+  s2.write(180-40);
+  s3.write(180);
+  s4.write(40);
+  s5.write(0);
+  s6.write(40);
 }
 
 void Zsec(){
-  d1.write(40);
-  d2.write(0);
-  d3.write(40);
-  d4.write(180);
-  d5.write(180-40);
-  d6.write(180-40);
+  d1.write(180-40);
+  d2.write(180-40);
+  d3.write(180);
+  d4.write(40);
+  d5.write(0);
+  d6.write(40);
 }
