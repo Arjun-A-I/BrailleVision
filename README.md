@@ -27,6 +27,12 @@ individual.<br/>
 helps in interacting with the public.<br/>
 <br/>
 <br/>
+# Project Description:
+There is main machine learning object detection model running in the background which outputs the object name in the dynamic braille created using servo motor,
+(this is cost efficient compared to Rs50000 microfluid braille).
+when the person concentrate on an object for more than 5 secs the object description is obtained using another machine learning model with object trained using classes
+.The interaction include Speech to braille text when interacted with a person , Reads book content when interacted with a readable materials , Traffic signal and sign recognition when interacted with them.
+Also has an unique feature in which a person can use Sign language to tell about an object ot the ML model which is detected from the surrounding using YOLOv5 model and their location is passed on to the individual using the braille reader.
 # OBJECT DETECTION :
 ![Screenshot 2023-03-19 144523](https://user-images.githubusercontent.com/98375679/226165654-196b8d23-1a95-4b1b-98df-9a644f5d5a6f.png)
 <br/>
