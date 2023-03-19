@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Live Location Map</title>
+    <meta charset="utf-8" />
+    <script type='text/javascript'
+        src='https://www.bing.com/api/maps/mapcontrol?callback=loadMapScenario&key=AnI0N-B3jDuLRoCejk_DDpDpG4Cnbw7fufeY51qYofBzaFP3QssEATUdQJSBvWPU'
+        async defer></script>
+    <script>
+        function loadMapScenario() {
+            var map = new Microsoft.Maps.Map('#map', {
+                zoom: 15
+            });
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var loc = new Microsoft.Maps.Location(position.coords.latitude, position.coords.longitude);
+                   
+                    map.setView({ center: loc });
+
+                    var pin = new Microsoft.Maps.Pushpin(loc, { title: 'Your location' });
+                    map.entities.push(pin);
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                alert("Your browser doesn't support Geolocation.");
+            }
+        }
+    </script>
+
+    <style>
+        #map {
+            height: 600px;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        video {
+            width: 500px;
+            height: 500px;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body onload="loadMapScenario()">
+    <h1>Navigation and Visual Interaction System for Deaf and Blind</h1>
+    <h2>Live Footage</h2>
+    <img src="{{ url_for('video') }}" width="640" height="480">
+    <h2>Live Location</h2>
+    <div id="map"></div>
+</body>
+
+</html>
