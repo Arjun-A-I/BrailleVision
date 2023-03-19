@@ -2,12 +2,13 @@
 #define ACTIVATED LOW
 Servo s1,s2,s3,s4,s5,s6;
 Servo d1,d2,d3,d4,d5,d6;
-String receivedString,receivedCommand;
+String receivedString,receivedCommand,receivedSecondary;
 int move[3];
-bool counterStart=false;
-int counter=0,stringLength=6;
+bool counterStart=false,secCount=false;
+int counter=0,stringLength;
 int button=4;
-int i=1;
+int button2 = 7;
+int i=1,j=1;
 void setup() {
   // put your setup code here, to run once:
 
@@ -39,14 +40,28 @@ void receieveData(){
     if (c=='$'){
       counterStart = true;
     }
+    if(c=='*')
+    {
+      secCount=true;
+    }
     if(counterStart)
       if(counter<stringLength)
       {
         receivedString = String(receivedString+c);
         counter++;
       }
+    if(secCount)
+    {
+      if(counter<stringLength)
+      {
+        receivedSecondary = String(receivedSecondary+c);
+        counter++;
+      }
+    }
   }
 }
+
+
 
 void receieveMovement(){
   while(Serial.available())
@@ -80,7 +95,8 @@ void loop() {
   //receieveData();
   receieveMovement();
   String word = receivedString;
-
+  String details = receivedSecondary;
+  
    if(move[1]==1 && move[2]==0)
    {
       Lsec();
@@ -90,6 +106,7 @@ void loop() {
      Rsec();
    }
   delay(800);
+  
      if(word[i]=='A' || word[i]=='a')
      {
          A();
@@ -198,11 +215,127 @@ void loop() {
      {
          Z();
      }
+
+     //Secondary Braillie
+    if (details[j] == 'A' || details[j] == 'a')
+    {
+        Asec();
+        Serial.print("Called A");
+    }
+    if (details[j] == 'B' || details[j] == 'b')
+    {
+        Bsec();
+    }
+    if (details[j] == 'C' || details[j] == 'c')
+    {
+        Csec();
+    }
+    if (details[j] == 'D' || details[j] == 'd')
+    {
+        Dsec();
+    }
+    if (details[j] == 'E' || details[j] == 'e')
+    {
+        Esec();
+        Serial.print("Called E");
+    }
+    if (details[j] == 'F' || details[j] == 'f')
+    {
+        Fsec();
+    }
+    if (details[j] == 'G' || details[j] == 'g')
+    {
+        Gsec();
+    }
+    if (details[j] == 'H' || details[j] == 'h')
+    {
+        Hsec();
+    }
+    if (details[j] == 'I' || details[j] == 'i')
+    {
+        Isec();
+    }
+    if (details[j] == 'J' || details[j] == 'j')
+    {
+        Jsec();
+    }
+    if (details[j] == 'K' || details[j] == 'k')
+    {
+        Ksec();
+    }
+    if (details[j] == 'L' || details[j] == 'l')
+    {
+        Lsec();
+        Serial.print("Called L");
+    }
+    if (details[j] == 'M' || details[j] == 'm')
+    {
+        Msec();
+    }
+    if (details[j] == 'N' || details[j] == 'n')
+    {
+        Nsec();
+    }
+    if (details[j] == 'O' || details[j] == 'o')
+    {
+        Osec();
+    }
+    if (details[j] == 'P' || details[j] == 'p')
+    {
+        Psec();
+        Serial.print("Called P");
+    }
+    if (details[j] == 'Q' || details[j] == 'q')
+    {
+        Qsec();
+    }
+    if (details[j] == 'R' || details[j] == 'r')
+    {
+        Rsec();
+    }
+    if (details[j] == 'S' || details[j] == 's')
+    {
+        Ssec();
+    }
+    if (details[j] == 'T' || details[j] == 't')
+    {
+        Tsec();
+    }
+    if (details[j] == 'U' || details[j] == 'u')
+    {
+        Usec();
+    }
+    if (details[j] == 'V' || details[j] == 'v')
+    {
+        Vsec();
+    }
+    if (details[j] == 'W' || details[j] == 'w')
+    {
+        Wsec();
+    }
+    if (details[j] == 'X' || details[j] == 'x')
+    {
+        Xsec();
+    }
+    if (details[j] == 'Y' || details[j] == 'y')
+    {
+        Ysec();
+    }
+    if (details[j] == 'Z' || details[j] == 'z')
+    {
+        Zsec();
+    }
      byte btn = digitalRead(button);
      if(btn == LOW)
      {
-      Serial.print("button pressed");
+      Serial.print("1st button pressed");
         i++;
+     }
+     byte secbtn = digitalRead(button2);
+     if(secbtn == LOW)
+     {
+      Serial.print("2nd button pressed");
+        j++;
      }
 }
 
