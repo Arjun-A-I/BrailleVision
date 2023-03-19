@@ -1,7 +1,7 @@
 # Technohack-Team-Sentinal
 This project aims to improve the daily lives of audio-visually impaired individuals by creating a navigation and interaction system that uses object recognition technology and dynamic braille to identify objects in their environment. Additionally, the system enables the user to find objects using ASL and guides them towards the object. 
 
-#What are the specific problems you are planning to solve with this idea? <br/>
+# What are the specific problems you are planning to solve with this idea? <br/>
 ● Audio-Visually impaired people are always dependent on others in their daily
 routine.<br/>
 ● They find it difficult to understand about an object.<br/>
@@ -13,7 +13,7 @@ need .<br/>
 ● Find difficult to use the public transport system.<br/>
 
 
- #What are the solutions you plan to implement to solve the above mentioned problem?<br/>
+ # What are the solutions you plan to implement to solve the above mentioned problem?<br/>
 ● The interaction between the computer vision and the individual is achieved using
 a dynamic braille.<br/>
 ● This device helps in interacting with the surrounding objects and makes their task
@@ -27,16 +27,16 @@ individual.<br/>
 helps in interacting with the public.<br/>
 <br/>
 <br/>
-#OBJECT DETECTION :
+# OBJECT DETECTION :
 ![Screenshot 2023-03-19 144523](https://user-images.githubusercontent.com/98375679/226165654-196b8d23-1a95-4b1b-98df-9a644f5d5a6f.png)
 <br/>
 <br/>
 <br/>
 <br/>
-#AMERICAN SIGN LAGUAGE TO DETECT OBJECT OF THEIR CHOICE(eg. Apple)
+# AMERICAN SIGN LAGUAGE TO DETECT OBJECT OF THEIR CHOICE(eg. Apple)
 ![IMG_8828](https://user-images.githubusercontent.com/98375679/226167902-ff271daa-729c-43d5-949f-423eb85aee68.PNG)
 
-#LIVE TRACKING OF OBJECT USING BRAILLE:
+# LIVE TRACKING OF OBJECT USING BRAILLE:
 ![IMG_E8824](https://user-images.githubusercontent.com/98375679/226167549-54f3945b-001f-44a1-aab5-79a2489193fc.JPG)
 <br/>
 
