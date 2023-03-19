@@ -41,4 +41,10 @@ helps in interacting with the public.<br/>
 <br/>
 
 ![IMG_E8826](https://user-images.githubusercontent.com/98375679/226167652-300db26e-16ca-4c8b-9e35-168b0fd42e83.JPG)
+<br/>
+<br/>
+# WHEN PERSON IS DETECTED SPEECH RECOGNITION MODEL COVERTS TO TEXT AND DISPLAYED IN BRAILLE
+
+![IMG_E8830](https://user-images.githubusercontent.com/98375679/226168353-3b893654-25d6-4857-99af-8af1e3009f8a.JPG)
+
 
