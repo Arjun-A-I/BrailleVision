@@ -1,6 +1,8 @@
-0 Blank
-1 APPLE
-2 BOOK
-3 PERSON
-4 SIGN
-5 TRAFFLIGHT
+0 blank
+1 apple
+2 book
+3 person
+4 sign
+5 traffic
+6 hand
+7 OHAND
