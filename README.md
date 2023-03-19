@@ -55,5 +55,6 @@ Also has an unique feature in which a person can use Sign language to tell about
 
 <br/>
 # Their visual along with live location can be tracked:
-![WhatsApp Image 2023-03-19 at 3 38 10 PM](https://user-images.githubusercontent.com/98375679/226168471-330e8abe-5c08-4079-9612-e1554497de8f.jpeg)
+
+![WhatsApp Image 2023-03-19 at 3 38 10 PM](https://user-images.githubusercontent.com/98375679/226168956-235bc8cf-343c-4f56-9f8b-b7e204c771b2.jpeg)
 
