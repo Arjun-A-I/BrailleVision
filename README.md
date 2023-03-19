@@ -1,7 +1,7 @@
 # Technohack-Team-Sentinal
 This project aims to improve the daily lives of audio-visually impaired individuals by creating a navigation and interaction system that uses object recognition technology and dynamic braille to identify objects in their environment. Additionally, the system enables the user to find objects using ASL and guides them towards the object. 
 
-# What are the specific problems you are planning to solve with this idea? <br/>
+# Specific problems  planning to solve with this idea: <br/>
 ● Audio-Visually impaired people are always dependent on others in their daily
 routine.<br/>
 ● They find it difficult to understand about an object.<br/>
@@ -13,7 +13,7 @@ need .<br/>
 ● Find difficult to use the public transport system.<br/>
 
 
- # What are the solutions you plan to implement to solve the above mentioned problem?<br/>
+ # Solution plan to implement and solve the above mentioned problems:<br/>
 ● The interaction between the computer vision and the individual is achieved using
 a dynamic braille.<br/>
 ● This device helps in interacting with the surrounding objects and makes their task
