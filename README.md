@@ -28,4 +28,5 @@ helps in interacting with the public.<br/>
 <br/>
 <br/>
 OBJECT DETECTION :
-![Screenshot 2023-03-19 144523](https://user-images.githubusercontent.com/98375679/226165591-b6b3dde7-fbae-416a-ae54-87e344bbd87c.png)
+![Screenshot 2023-03-19 144523](https://user-images.githubusercontent.com/98375679/226165654-196b8d23-1a95-4b1b-98df-9a644f5d5a6f.png)
+
