@@ -29,4 +29,11 @@ helps in interacting with the public.<br/>
 <br/>
 OBJECT DETECTION :
 ![Screenshot 2023-03-19 144523](https://user-images.githubusercontent.com/98375679/226165654-196b8d23-1a95-4b1b-98df-9a644f5d5a6f.png)
+<br/>
+<br/>
+LIVE TRACKING OF OBJECT USING BRAILLE:
+![IMG_E8824](https://user-images.githubusercontent.com/98375679/226167549-54f3945b-001f-44a1-aab5-79a2489193fc.JPG)
+<br/>
+
+![IMG_E8826](https://user-images.githubusercontent.com/98375679/226167652-300db26e-16ca-4c8b-9e35-168b0fd42e83.JPG)
 
