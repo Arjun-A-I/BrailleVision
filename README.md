@@ -25,3 +25,7 @@ individual.<br/>
 ● Converts speech to braille (communicating between normal person)<br/>
 ● Has a screen which can be edited by the individual using sign language which
 helps in interacting with the public.<br/>
+<br/>
+<br/>
+OBJECT DETECTION :
+![Screenshot 2023-03-19 144523](https://user-images.githubusercontent.com/98375679/226165591-b6b3dde7-fbae-416a-ae54-87e344bbd87c.png)
