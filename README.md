@@ -1,4 +1,4 @@
-# Technohack-Team-Sentinal
+# Technohack-Team-Sentinal - DYNAMIC BRAILLE WITH USER INPUT OBJECT DETECTION USING AMERICAN SIGN LANGUAGE AND MAY OTHER ML FEATURES
 This project aims to improve the daily lives of audio-visually impaired individuals by creating a navigation and interaction system that uses object recognition technology and dynamic braille to identify objects in their environment. Additionally, the system enables the user to find objects using ASL and guides them towards the object. 
 
 # Specific problems  planning to solve with this idea: <br/>
