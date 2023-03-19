@@ -1,8 +1,10 @@
 #include<Servo.h>
 #define ACTIVATED LOW
 Servo s1,s2,s3,s4,s5,s6;
-String receivedString;
-bool counterStart;
+Servo d1,d2,d3,d4,d5,d6;
+String receivedString,receivedCommand;
+int move[3];
+bool counterStart=false;
 int counter=0,stringLength=6;
 int button=4;
 int i=1;
@@ -16,6 +18,13 @@ void setup() {
   s4.attach(A3);
   s5.attach(A4);
   s6.attach(A5);
+  //for 2nd braille
+  d1.attach(3);
+  d2.attach(5);
+  d3.attach(6);
+  d4.attach(9);
+  d5.attach(10);
+  d6.attach(11);
   Serial.begin(9600);
   pinMode(button,INPUT_PULLUP);
 //  digitalWrite(button,LOW);
@@ -39,12 +48,47 @@ void receieveData(){
   }
 }
 
+void receieveMovement(){
+  while(Serial.available())
+  {
+    char c2 = Serial.read();
+    Serial.print(c2);
+
+    if (c2=='$'){
+      counterStart = true;
+    }
+    if(counterStart)
+      if(counter<4)
+      {
+        receivedCommand = String(receivedCommand+c2);
+        counter++;
+      }
+      if(counter>=4)
+      {
+        move[0]=receivedCommand.substring(1,1).toInt();
+        move[1]=receivedCommand.substring(2,2).toInt();
+        move[2]=receivedCommand.substring(3,3).toInt();
+        receivedCommand="";
+        counter=0;
+        counterStart=false;
+      }
+  }
+}
+
 void loop() {
   // put your main code here, to run repeatedly:
-  receieveData();
+  //receieveData();
+  receieveMovement();
   String word = receivedString;
 
-  
+   if(move[1]==1 && move[2]==0)
+   {
+      Lsec();
+   }
+   if(move[1]==0 && move[2]==1)
+   {
+     Rsec();
+   }
   delay(800);
      if(word[i]=='A' || word[i]=='a')
      {
@@ -172,6 +216,15 @@ void A(){
   s6.write(180);
 }
 
+void Asec(){
+  d1.write(40);
+  d2.write(0);
+  d3.write(0);
+  d4.write(180);
+  d5.write(180);
+  d6.write(180);
+}
+
 void B(){
   s1.write(40);
   s2.write(40);
@@ -179,6 +232,15 @@ void B(){
   s4.write(180);
   s5.write(180);
   s6.write(180);
+}
+
+void Bsec(){
+  d1.write(40);
+  d2.write(40);
+  d3.write(0);
+  d4.write(180);
+  d5.write(180);
+  d6.write(180);
 }
 
 void C(){
@@ -190,6 +252,15 @@ void C(){
   s6.write(180);
 }
 
+void Csec(){
+  d1.write(90);
+  d2.write(0);
+  d3.write(0);
+  d4.write(180-40);
+  d5.write(180);
+  d6.write(180);
+}
+
 void D(){
   s1.write(40);
   s2.write(0);
@@ -197,6 +268,15 @@ void D(){
   s4.write(180-40);
   s5.write(180-40);
   s6.write(180);
+}
+
+void Dsec(){
+  d1.write(40);
+  d2.write(0);
+  d3.write(0);
+  d4.write(180-40);
+  d5.write(180-40);
+  d6.write(180);
 }
 
 void E(){
@@ -208,6 +288,15 @@ void E(){
   s6.write(180);
 }
 
+void Esec(){
+  d1.write(40);
+  d2.write(0);
+  d3.write(0);
+  d4.write(180);
+  d5.write(180-40);
+  d6.write(180);
+}
+
 void Flet(){
   s1.write(40);
   s2.write(40);
@@ -215,6 +304,15 @@ void Flet(){
   s4.write(180-40);
   s5.write(180);
   s6.write(180);
+}
+
+void Fsec(){
+  d1.write(40);
+  d2.write(40);
+  d3.write(0);
+  d4.write(180-40);
+  d5.write(180);
+  d6.write(180);
 }
 
 void G(){
@@ -226,6 +324,15 @@ void G(){
   s6.write(180);
 }
 
+void Gsec(){
+  d1.write(40);
+  d2.write(40);
+  d3.write(0);
+  d4.write(180-40);
+  d5.write(180-40);
+  d6.write(180);
+}
+
 void H(){
   s1.write(40);
   s2.write(40);
@@ -233,6 +340,15 @@ void H(){
   s4.write(180);
   s5.write(180-40);
   s6.write(180);
+}
+
+void Hsec(){
+  d1.write(40);
+  d2.write(40);
+  d3.write(0);
+  d4.write(180);
+  d5.write(180-40);
+  d6.write(180);
 }
 
 void I(){
@@ -244,6 +360,15 @@ void I(){
   s6.write(180);
 }
 
+void Isec(){
+  d1.write(0);
+  d2.write(40);
+  d3.write(40);
+  d4.write(180-40);
+  d5.write(180);
+  d6.write(180);
+}
+
 void J(){
   s1.write(0);
   s2.write(40);
@@ -251,6 +376,15 @@ void J(){
   s4.write(180-40);
   s5.write(180-40);
   s6.write(180);
+}
+
+void Jsec(){
+  d1.write(0);
+  d2.write(40);
+  d3.write(0);
+  d4.write(180-40);
+  d5.write(180-40);
+  d6.write(180);
 }
 
 void K(){
@@ -262,6 +396,15 @@ void K(){
   s6.write(180);
 }
 
+void Ksec(){
+  d1.write(40);
+  d2.write(0);
+  d3.write(40);
+  d4.write(180);
+  d5.write(180);
+  d6.write(180);
+}
+
 void L(){
   s1.write(40);
   s2.write(40);
@@ -269,6 +412,15 @@ void L(){
   s4.write(180);
   s5.write(180);
   s6.write(180);
+}
+
+void Lsec(){
+  d1.write(40);
+  d2.write(40);
+  d3.write(40);
+  d4.write(180);
+  d5.write(180);
+  d6.write(180);
 }
 
 void M(){
@@ -280,6 +432,15 @@ void M(){
   s6.write(180);
 }
 
+void Msec(){
+  d1.write(40);
+  d2.write(0);
+  d3.write(40);
+  d4.write(180-40);
+  d5.write(180);
+  d6.write(180);
+}
+
 void N(){
   s1.write(40);
   s2.write(0);
@@ -287,6 +448,15 @@ void N(){
   s4.write(180-40);
   s5.write(180-40);
   s6.write(180);
+}
+
+void Nsec(){
+  d1.write(40);
+  d2.write(0);
+  d3.write(40);
+  d4.write(180-40);
+  d5.write(180-40);
+  d6.write(180);
 }
 
 void O(){
@@ -298,6 +468,15 @@ void O(){
   s6.write(180);
 }
 
+void Osec(){
+  d1.write(40);
+  d2.write(0);
+  d3.write(40);
+  d4.write(180);
+  d5.write(180-40);
+  d6.write(180);
+}
+
 void P(){
   s1.write(40);
   s2.write(40);
@@ -305,6 +484,15 @@ void P(){
   s4.write(180-40);
   s5.write(180);
   s6.write(180);
+}
+
+void Psec(){
+  d1.write(40);
+  d2.write(40);
+  d3.write(40);
+  d4.write(180-40);
+  d5.write(180);
+  d6.write(180);
 }
 
 void Q(){
@@ -316,6 +504,15 @@ void Q(){
   s6.write(180);
 }
 
+void Qsec(){
+  d1.write(40);
+  d2.write(40);
+  d3.write(40);
+  d4.write(180-40);
+  d5.write(180-40);
+  d6.write(180);
+}
+
 void R(){
   s1.write(40);
   s2.write(40);
@@ -325,6 +522,16 @@ void R(){
   s6.write(180);
 }
 
+void Rsec(){
+  d1.write(40);
+  d2.write(40);
+  d3.write(40);
+  d4.write(180);
+  d5.write(180-40);
+  d6.write(180);
+}
+
+
 void S(){
   s1.write(0);
   s2.write(40);
@@ -332,6 +539,15 @@ void S(){
   s4.write(180-40);
   s5.write(180);
   s6.write(180);
+}
+
+void Ssec(){
+  d1.write(0);
+  d2.write(40);
+  d3.write(40);
+  d4.write(180-40);
+  d5.write(180);
+  d6.write(180);
 }
 
 void T(){
@@ -343,6 +559,15 @@ void T(){
   s6.write(180);
 }
 
+void Tsec(){
+  d1.write(0);
+  d2.write(40);
+  d3.write(40);
+  d4.write(180-40);
+  d5.write(180-40);
+  d6.write(180);
+}
+
 void U(){
   s1.write(40);
   s2.write(0);
@@ -350,6 +575,15 @@ void U(){
   s4.write(180);
   s5.write(180);
   s6.write(180-40);
+}
+
+void Usec(){
+  d1.write(40);
+  d2.write(0);
+  d3.write(40);
+  d4.write(180);
+  d5.write(180);
+  d6.write(180-40);
 }
 
 void V(){
@@ -361,6 +595,15 @@ void V(){
   s6.write(180-40);
 }
 
+void Vsec(){
+  d1.write(40);
+  d2.write(40);
+  d3.write(40);
+  d4.write(180);
+  d5.write(180);
+  d6.write(180-40);
+}
+
 void W(){
   s1.write(0);
   s2.write(40);
@@ -368,6 +611,15 @@ void W(){
   s4.write(180-40);
   s5.write(180-40);
   s6.write(180-40);
+}
+
+void Wsec(){
+  d1.write(0);
+  d2.write(40);
+  d3.write(0);
+  d4.write(180-40);
+  d5.write(180-40);
+  d6.write(180-40);
 }
 
 void X(){
@@ -379,6 +631,15 @@ void X(){
   s6.write(180-40);
 }
 
+void Xsec(){
+  d1.write(40);
+  d2.write(0);
+  d3.write(40);
+  d4.write(180-40);
+  d5.write(180);
+  d6.write(180-40);
+}
+
 void Y(){
   s1.write(40);
   s2.write(0);
@@ -388,6 +649,15 @@ void Y(){
   s6.write(180-40);
 }
 
+void Ysec(){
+  d1.write(40);
+  d2.write(0);
+  d3.write(40);
+  d4.write(180-40);
+  d5.write(180-40);
+  d6.write(180-40);
+}
+
 void Z(){
   s1.write(40);
   s2.write(0);
@@ -395,4 +665,13 @@ void Z(){
   s4.write(180);
   s5.write(180-40);
   s6.write(180-40);
+}
+
+void Zsec(){
+  d1.write(40);
+  d2.write(0);
+  d3.write(40);
+  d4.write(180);
+  d5.write(180-40);
+  d6.write(180-40);
 }
