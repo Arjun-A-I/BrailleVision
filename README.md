@@ -47,4 +47,7 @@ helps in interacting with the public.<br/>
 
 ![IMG_E8830](https://user-images.githubusercontent.com/98375679/226168353-3b893654-25d6-4857-99af-8af1e3009f8a.JPG)
 
+<br/>
+# Their visual along with live location can be tracked:
+![WhatsApp Image 2023-03-19 at 3 38 10 PM](https://user-images.githubusercontent.com/98375679/226168471-330e8abe-5c08-4079-9612-e1554497de8f.jpeg)
 
