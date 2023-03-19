@@ -27,16 +27,16 @@ individual.<br/>
 helps in interacting with the public.<br/>
 <br/>
 <br/>
-OBJECT DETECTION :
+<h1>OBJECT DETECTION :<h1/>
 ![Screenshot 2023-03-19 144523](https://user-images.githubusercontent.com/98375679/226165654-196b8d23-1a95-4b1b-98df-9a644f5d5a6f.png)
 <br/>
 <br/>
 <br/>
 <br/>
-AMERICAN SIGN LAGUAGE TO DETECT OBJECT OF THEIR CHOICE(eg. Apple)
+<h1>AMERICAN SIGN LAGUAGE TO DETECT OBJECT OF THEIR CHOICE(eg. Apple)<h1/>
 ![IMG_8828](https://user-images.githubusercontent.com/98375679/226167902-ff271daa-729c-43d5-949f-423eb85aee68.PNG)
 
-LIVE TRACKING OF OBJECT USING BRAILLE:
+<h1>LIVE TRACKING OF OBJECT USING BRAILLE:<h1/>
 ![IMG_E8824](https://user-images.githubusercontent.com/98375679/226167549-54f3945b-001f-44a1-aab5-79a2489193fc.JPG)
 <br/>
 
