@@ -4,7 +4,8 @@
 // This source code is licensed under the BSD-style license found in the
 // LICENSE file in the root directory of this source tree. 
   
-#include<Servo.h>
+
+#include <Servo.h>
 #define ACTIVATED LOW
 Servo s1,s2,s3,s4,s5,s6;
 Servo d1,d2,d3,d4,d5,d6;
@@ -117,14 +118,25 @@ void loop() {
   receieveMovement();
   String word = receivedString;
   String details = receivedSecondary;
-  
+
+   Serial.print(move[1]);
+   Serial.print(move[2]);
+   Serial.print(move[0]);
    if(move[1]==1 && move[2]==0)
    {
-      Lsec();
+      L();
    }
    if(move[1]==0 && move[2]==1)
    {
-     Rsec();
+     R();
+   }
+   if(move[1]==0 && move[2]==0)
+   {
+    U();
+   }
+   if(move[1]==1 && move[2]==1)
+   {
+    D();
    }
   delay(800);
   
