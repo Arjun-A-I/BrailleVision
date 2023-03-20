@@ -15,6 +15,12 @@ import pyttsx3
 from cvzone.HandTrackingModule import HandDetector
 from cvzone.ClassificationModule import Classifier
 import subprocess
+import serial
+mySerial = serial.Serial("COM11", 9600)
+
+left = "$110"
+right = "$101"
+stop = "$100"
 
 cap = cv2.VideoCapture(0)
 
@@ -101,7 +107,7 @@ def check_for_class(text):
 while True:
     success, img = cap.read()
     count=count+1
-    if(count>=30):
+    if(count>=40):
         det=True
     if success and det:
         imgResize = cv2.resize(img, (imgSize, imgSize))
@@ -109,6 +115,8 @@ while True:
         print(prediction, index)
         print(labels[index])
         cObj = labels[index]
+        out = "$"+labels[index]
+        mySerial.write(out.encode('utf-8'))
         if cObj == pObj:
             desCount = desCount+1
             if desCount>=4:
@@ -116,16 +124,22 @@ while True:
                     predictiontf, indtf = classifier_light.getPrediction(imgResize, draw=False)
                     print(predictiontf,indtf)
                     print("TRAFFIC LIGHT IS : "+trafficlabel[indtf])
+                    out = "*"+trafficlabel[indtf]
+                    mySerial.write(out.encode('utf-8'))
                 if cObj == "book":
                     rgb = cv2.cvtColor(imgResize,cv2.COLOR_BGR2RGB)
                     #cv2.imshow("image",img)
                     config_tesseract = '--tessdata-dir tessdata --psm 6'
                     text = pytesseract.image_to_string(rgb,lang='eng',config = config_tesseract)
                     print(text)
+                    out = "*"+text
+                    mySerial.write(out.encode('utf-8'))
                 if cObj=="sign":
                     predictionsi, indsi = classifier_sign.getPrediction(imgResize, draw=False)
                     print(predictionsi,indsi)
                     print("THE SIGN IS  : "+signlabel[indsi])
+                    out = "*"+signlabel[indsi]
+                    mySerial.write(out.encode('utf-8'))
                 if cObj == "Person":
                     recognizer = speech_recognition.Recognizer()
                     try:
@@ -136,8 +150,11 @@ while True:
                             text = recognizer.recognize_google(audio)
                             text=text.lower()
                             print(f"Recognized {text}")
+                            out = "*"+ text
+                            mySerial.write(out.encode('utf-8'))
                     except speech_recognition.UnknownValueError():
                         recognizer = speech_recognition.Recognizer()
+                    
                 if cObj == "hand":
                     imgOutputasl = imgasl.copy()
                     handsasl, imgasl = detectorasl.findHands(imgasl)
