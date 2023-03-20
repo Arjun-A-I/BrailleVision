@@ -27,13 +27,12 @@ matplotlib.use('Agg')  # for writing to files only
 
 import serial
 
-#mySerial = serial.Serial("COM11", 9600)
+mySerial = serial.Serial("COM11", 9600)
 
-left = "$10000"
-right = "$01000"
-stop = "$00000"
-forward = "$11000"
-pick = "$00100"
+left = "$110"
+right = "$101"
+up = "$100"
+down = "$111"
 
 
 class Colors:
@@ -114,23 +113,22 @@ class Annotator:
             cy = int(y1+ (y2-y1)/2)
             cv2.circle(self.im,(cx,cy),3,(255,0,0),3)
             cv2.circle(self.im,(320,400),3,(255,0,0),3)
-            # if cx<300:
-            #     mySerial.write(left.encode('utf-8'))
-            # if cx>340:
-            #     mySerial.write(right.encode('utf-8'))
+            if cx<300:
+                mySerial.write(left.encode('utf-8'))
+            if cx>340:
+                mySerial.write(right.encode('utf-8'))
 
-            # if cx <=340 and cx>=300 and y2 <420:
-            #     mySerial.write(stop.encode('utf-8'))
-            #     mySerial.write(forward.encode('utf-8'))
-            #     mySerial.write(forward.encode('utf-8'))
-
+            if cy <=230:
+                mySerial.write(up.encode('utf-8'))
             # if cx<=340 and cx>=300 and y2 >= 420:
             #     mySerial.write(stop.encode('utf-8'))
             #     mySerial.write(pick.encode('utf-8'))
-            # while True:
-            #     if mySerial.in_waiting >0:
-            #         message = mySerial.readline().strip()
-            #         print("Recieved message: "+ message.decode())
+            if cy >=250:
+                mySerial.write(down.encode('utf-8'))
+            while True:
+                if mySerial.in_waiting >0:
+                    message = mySerial.readline().strip()
+                    print("Recieved message: "+ message.decode())
             
             
             
