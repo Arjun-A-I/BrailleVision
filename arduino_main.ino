@@ -1,4 +1,9 @@
+// Copyright (c) <2023>, <MANU N S>
+// All rights reserved.
 
+// This source code is licensed under the BSD-style license found in the
+// LICENSE file in the root directory of this source tree. 
+  
 #include<Servo.h>
 #define ACTIVATED LOW
 Servo s1,s2,s3,s4,s5,s6;
