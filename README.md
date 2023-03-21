@@ -54,7 +54,7 @@ Also has an unique feature in which a person can use Sign language to tell about
 ![IMG_E8830](https://user-images.githubusercontent.com/98375679/226168353-3b893654-25d6-4857-99af-8af1e3009f8a.JPG)
 
 <br/>
-# THEIR VISUAL ALONG WITH LIVE LOCATION CAN BE TRACKED:
+ # THEIR VISUAL ALONG WITH LIVE LOCATION CAN BE TRACKED:
 
 ![WhatsApp Image 2023-03-19 at 3 38 10 PM](https://user-images.githubusercontent.com/98375679/226168956-235bc8cf-343c-4f56-9f8b-b7e204c771b2.jpeg)
 
